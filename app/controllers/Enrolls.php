@@ -70,27 +70,46 @@ class Enrolls extends Controller
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-      $post_data = http_build_query(
-          array(
-              'secret' => "6Lc3rlsrAAAAAPisCZMU480WzdRQCua2JsT-E5GD",
-              'response' => $_POST['g-recaptcha-response'],
-              'remoteip' => $_SERVER['REMOTE_ADDR']
-          )
-      );
-      $opts = array('http' =>
-          array(
-              'method'  => 'POST',
-              'header'  => 'Content-type: application/x-www-form-urlencoded',
-              'content' => $post_data
-          )
-      );
+      // $post_data = http_build_query(
+      //     array(
+      //         'secret' => "6LeNtMcrAAAAAE6ODEJB6dVsGrqLLdvw5LxG8o8Q",
+      //         'response' => $_POST['g-recaptcha-response'],
+      //         'remoteip' => $_SERVER['REMOTE_ADDR']
+      //     )
+      // );
+      // $opts = array('http' =>
+      //     array(
+      //         'method'  => 'POST',
+      //         'header'  => 'Content-type: application/x-www-form-urlencoded',
+      //         'content' => $post_data
+      //     )
+      // );
+
+    $secret = "6LeNtMcrAAAAAE6ODEJB6dVsGrqLLdvw5LxG8o8Q";
+    $responseKey = $_POST['g-recaptcha-response'];
+    $remoteip = $_SERVER['REMOTE_ADDR'];
+      
+      $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+            'secret' => $secret,
+            'response' => $responseKey,
+            'remoteip' => $remoteip
+        ]));
+        
+        $response = curl_exec($ch);
+        curl_close($ch);
+        
+        $result = json_decode($response, true);
 
 
-      $context  = stream_context_create($opts);
-      $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
-      $result = json_decode($response);
+      // $context  = stream_context_create($opts);
+      // $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
+      // $result = json_decode($response);
       //print_r($result);
-      if (!$result->success) {
+      if (!$result['success']) {
         $data['status'] = "fail";
         $data['msg']= 'CAPTCHA verification failed';
       }else{
@@ -213,7 +232,7 @@ class Enrolls extends Controller
 
   public function savestep3()
   {
-      // Inicia sesión solo si no ha sido iniciada aún
+      // Inicia sesi贸n solo si no ha sido iniciada a煤n
   if (session_status() !== PHP_SESSION_ACTIVE) {
       session_start();
   }
@@ -717,11 +736,11 @@ class Enrolls extends Controller
     $mail->Port       = 587;                                 // TCP port to connect to
     //Recipients
     $mail->setFrom('lifeline@goknows.com', 'Lileline Orders');
-    //$mail->addAddress('xneriox@gmail.com');
-    $mail->addAddress('lifeline@goknows.com');
+    $mail->addAddress('currutia44@gmail.com');
+    //$mail->addAddress('lifeline@goknows.com');
     //$mail->addCC('jparker@galaxydistribution.com'); 
     //$mail->addCC('currutia44@gmail.com');      // Add a recipient
-    //$mail->addBCC('xneriox@gmail.com');
+    $mail->addBCC('xneriox@gmail.com');
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'A new lifeline order has been submitted';
     $mail->Body    = $message;

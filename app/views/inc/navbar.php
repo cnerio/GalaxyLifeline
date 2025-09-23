@@ -1,12 +1,10 @@
 <header>
     <nav id="mainNav" class="navbar navbar-expand-md navbar-shrink  fixed-top py-2">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="/">
-            <figure>
-                Galaxy Lifeline
-            <!-- <img class="img-fluid" style="width: 105px;" src="<?php //echo URLROOT; ?>/public/img/GO_logo_color.svg" alt=""> -->
-            <figcaption>Powered by American Broadband + Telecommunication</figcaption>
-            </figure>
+        <!-- <a class="navbar-brand d-flex align-items-center" href="/"> -->
+        <a class="navbar-brand">
+            <h2 class="fw-hold text-bold mb-0">Galaxy Lifeline</h2>
+            <p style="font-size:9px;"><small>Powered by American Broadband + Telecommunication</small></p>
         </a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-1">
             <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>

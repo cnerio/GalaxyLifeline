@@ -304,7 +304,7 @@ $fbclid = isset($_GET['fbclid']) ? $_GET['fbclid'] : null
                             </div>
                             <div class="row mt-3">
                                     <div class="col-md-12" style="text-align: right;">
-                                        <div id="recaptcha" class="g-recaptcha" style="display: inline-block" data-sitekey="6Lc3rlsrAAAAAH0jwNcLY9v1U4Phi4lPTI4FTmAF"></div>
+                                        <div id="recaptcha" class="g-recaptcha" style="display: inline-block" data-sitekey="6LeNtMcrAAAAAJDYPHZO6if3mF_0bUv1Ls0_-24E"></div>
                                     </div>
                                     <div class="col-md-12" style="text-align: right;"> 
                                         <span class="msg-error error"></span>
@@ -318,7 +318,7 @@ $fbclid = isset($_GET['fbclid']) ? $_GET['fbclid'] : null
                                     </div>
                                 </div>
                             <input type="hidden" id="url" name="url" value="<?php echo $full_url; ?>">
-                            <input type="hidden" id="company" name="company" value="GOTECH">
+                            <input type="hidden" id="company" name="company" value="GALAXY">
                             <input type="hidden" id="utm_source" name="utm_source" value="<?php echo $utm_source; ?>">
                             <input type="hidden" id="utm_medium" name="utm_medium" value="<?php echo $utm_medium; ?>">
                             <input type="hidden" id="utm_campaign" name="utm_campaign" value="<?php echo $utm_campaign; ?>">
