@@ -55,7 +55,7 @@ require APPROOT . '/views/inc/navbar.php';
                     <h2 class="fw-bold text-secondary mb-2"> Do you receive government benefits?</h2>
                     <p class="mb-0">Just fill out this enrollment form.</p>
                 </div>
-                <div class="my-2"><a class="btn btn-light fs-5 py-2 px-4" role="button" href="<?php echo URLROOT; ?>/enrolls?<?php echo $queryString; ?>">Apply Now!</a></div>
+                <div class="my-2"><a class="btn btn-light fs-5 py-2 px-4" role="button" href="<?php echo URLROOT; ?>/enrolls?<?php echo $queryString; ?>">Apply Now !</a></div>
             </div>
         </div>
     </section>

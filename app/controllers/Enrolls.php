@@ -232,7 +232,7 @@ class Enrolls extends Controller
 
   public function savestep3()
   {
-      // Inicia sesi贸n solo si no ha sido iniciada a煤n
+      // Inicia sesión solo si no ha sido iniciada aún
   if (session_status() !== PHP_SESSION_ACTIVE) {
       session_start();
   }
@@ -730,19 +730,19 @@ class Enrolls extends Controller
     $mail->isSMTP();                                            // Set mailer to use SMTP
     $mail->Host       = 'smtp-mail.outlook.com';            // Specify main and backup SMTP servers
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'lifeline@goknows.com';                     // SMTP username
-    $mail->Password   = 'D*391924961273uc';                               // SMTP password
+    $mail->Username   = 'lifeline@galaxydistribution.com';                     // SMTP username
+    $mail->Password   = 'Life@2025$$Galaxy';                               // SMTP password
     $mail->SMTPSecure = 'TLS/StartTLS';                                  // Enable TLS encryption, `ssl` also accepted
     $mail->Port       = 587;                                 // TCP port to connect to
     //Recipients
-    $mail->setFrom('lifeline@goknows.com', 'Lileline Orders');
+    $mail->setFrom('lifeline@galaxydistribution.com', 'Galaxy Lileline Orders');
     $mail->addAddress('currutia44@gmail.com');
     //$mail->addAddress('lifeline@goknows.com');
     //$mail->addCC('jparker@galaxydistribution.com'); 
     //$mail->addCC('currutia44@gmail.com');      // Add a recipient
     $mail->addBCC('xneriox@gmail.com');
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'A new lifeline order has been submitted';
+    $mail->Subject = 'A new Galaxy lifeline order has been submitted';
     $mail->Body    = $message;
     $mail->CharSet = 'UTF-8';
     $mail->send();

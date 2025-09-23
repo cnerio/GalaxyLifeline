@@ -1,1 +1,1 @@
-SQLSTATE[HY000] [1049] Unknown database 'go_records'
+SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)

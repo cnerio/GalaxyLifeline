@@ -1,9 +1,25 @@
 <footer>
      <hr />
+     <div class="row justify-content-center">
+                <div class="col-lg-10 col-md-12 pt-3 pb-3">
+                    <p class="legal-text"><span class="legal-span">*DISCLAIMER: Lifeline is a government assistance program. Only eligible consumers may enroll in Lifeline. Lifeline service is non-transferable and limited to one discount per household. Lifeline services are provided by our trusted partner American Broadband and Telecomunications “AMBT”. Availability is limited to select states and specific zip&nbsp;codes.</span> </p>
+                    <p class="legal-text"><span class="legal-span">Galaxy Distribution, Inc. “Galaxy” is powered by “AMBT” Company , a recognized service provider of Lifeline services. “AMBT” has engaged and supervises Surge to provide prospective beneficiaries enrollment services and customer support to qualified residents. Galaxy operates the galaxylifeline.com website. All references to Galaxy herein shall refer to "Galaxy Distribution, powered by AMBT”.</span> </p>
+                    <p class="legal-text"><span class="legal-span">Completion of this form is required. This form is used for the purpose of verifying your eligibility for and enrolling you in Lifeline benefits and an eligible “AMBT” service plan and will not be used for any other purpose. LifeLine benefits are subject to verification of eligibility by the National Verifier and/or a Third-Party Administrator “TPA”.<br></span></p>
+                    <p class="legal-text"><span class="legal-span">Lifeline services are subject to availability and AMBT’s <a target="_BLANK" href="https://galaxylifeline.com/public/terms-pdf.php" alt="americanassistance">Terms and Conditions</a> and Policies are available at <a target="_BLANK" href="https://galaxylifeline.com/privacy" alt="americanassistance">Here</a>.</span> </p>
+                    <p class="legal-text"><span class="legal-span">Requires 5G/4G LTE Unlocked AT&amp;T Compatible Phone.</span></p>
+                    <p class="legal-text"><span class="legal-span">Galaxy Lifeline are wholly owned subsidiaries of Galaxy Distribution.</span></p>
+
+                </div>
+
+            </div>
     <div class="container py-4 py-lg-5">
        
         <div class="text-muted d-flex justify-content-between align-items-center pt-3">
-            <p class="mb-0">Copyright © 2025 Galaxy</p>
+            <p class="mb-0">Copyright © 2025 Galaxy Distribution | <a href="https://galaxylifeline.com/privacy" target="_blank" rel="noopener noreferrer nofollow">
+  Privacy Policy
+</a> | <a href="https://galaxylifeline.com/public/terms-pdf.php" target="_blank" rel="noopener noreferrer nofollow">
+  Terms of Service
+</a></p>
             <ul class="list-inline mb-0">
                 <li class="list-inline-item"><svg class="bi bi-facebook" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
                         <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"></path>

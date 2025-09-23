@@ -491,7 +491,7 @@ if (isset($arrayPost['orderId'])) {
                         mkdir($dir, 0775, true); // Create directory recursively with permissions
                     }
 
-                    $pdf->Output('I', $pdfPath);
+                    $pdf->Output('F', $pdfPath);
                     //$pdf->Output('F', $pdfPath);
                     //exit();
                 // }else{

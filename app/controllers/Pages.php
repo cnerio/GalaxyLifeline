@@ -33,6 +33,12 @@
 
       $this->view('pages/about', $data);
     }
+    
+  public function privacy()
+    {
+        $data = ['title' => 'Privacy Policy'];
+        $this->view('pages/privacy', $data);
+    }
 
     public function contact(){
       $data = [
