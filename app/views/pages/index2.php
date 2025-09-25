@@ -16,7 +16,10 @@ require APPROOT . '/views/inc/navbar.php';
                     <div class="text-center">
                         <h1 class="display-4 fw-bold">Get your <span class="underline">FREE</span> Government Wireless Service&nbsp;now!.</h1>
                         <p class="fs-5 text-muted mb-2">High-Speed Data, Unlimited Talk & Text.</p>
-                        <div class="my-2"><a class="btn btn-primary fs-5 py-2 px-4" role="button" href="<?php echo URLROOT; ?>/enrolls?<?php echo $queryString; ?>">Apply Now!</a></div>
+                        <!-- <div class="my-2"><a class="btn btn-primary fs-5 py-2 px-4" role="button" href="<?php //echo URLROOT; ?>/enrolls?<?php //echo $queryString; ?>">Apply Now!</a></div> -->
+                         <div class="my-2">
+                    <button class="btn btn-primary fs-5 py-2 px-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Check Availability</button>
+                 </div>
                     </div>
                 </div>
                 <div class="col-md-6 mx-auto">
@@ -55,10 +58,57 @@ require APPROOT . '/views/inc/navbar.php';
                     <h2 class="fw-bold text-secondary mb-2"> Do you receive government benefits?</h2>
                     <p class="mb-0">Just fill out this enrollment form.</p>
                 </div>
-                <div class="my-2"><a class="btn btn-light fs-5 py-2 px-4" role="button" href="<?php echo URLROOT; ?>/enrolls?<?php echo $queryString; ?>">Apply Now !</a></div>
+                <!-- <div class="my-2"><a class="btn btn-light fs-5 py-2 px-4" role="button" href="<?php //echo URLROOT; ?>/enrolls?<?php //echo $queryString; ?>">Apply Now !</a></div> -->
+                 <div class="my-2">
+                    <button class="btn btn-light fs-5 py-2 px-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Check Availability</button>
+                 </div>
             </div>
         </div>
     </section>
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="firstname">First Name <span class="requiredmark">*</span></label>
+                                        <input type="text" id="firstname" name="firstname" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="lastname">Last Name <span class="requiredmark">*</span></label>
+                                        <input type="text" id="lastname" name="lastname" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+        <div class="row pt-2">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="address1">Street Address <span class="requiredmark">*</span></label>
+                                        <input type="text" id="address1" name="address1" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="address2">Apartment or Unit Number</label>
+                                        <input type="text" id="address2" name="addess2" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+        <button type="button" class="btn btn-primary">Get Benefits</button>
+      </div>
+    </div>
+  </div>
+</div>
   
 <?php require APPROOT . '/views/inc/footer.php'; ?>

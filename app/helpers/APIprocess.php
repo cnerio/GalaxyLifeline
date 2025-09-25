@@ -220,7 +220,8 @@ Class APIprocess{
     if($orderId>0){
       if($fileData){
                 // Read the image file into a binary string 
-                $imageData = file_get_contents($fileData['filepath']);
+                //$imageData = file_get_contents($fileData['filepath']);
+                $imageData = $this->curl_get_file_contents($fileData['filepath']);
                 $filename = basename($fileData['filepath']);
                 //$compressed = gzencode($imageData);               // Compress with gzip
     //$compressedBase64 = base64_encode($compressed);
@@ -262,4 +263,22 @@ Class APIprocess{
 
     return $result;
   }
+
+  public function curl_get_file_contents($url) {
+    $ch = curl_init($url);
+
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+
+    $data = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        throw new Exception('cURL error: ' . curl_error($ch));
+    }
+
+    curl_close($ch);
+
+    return $data;
+}
 }

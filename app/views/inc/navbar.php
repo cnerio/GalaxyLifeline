@@ -15,8 +15,9 @@
                 <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
                 <li class="nav-item"><a class="nav-link" href="integrations.html">Integrations</a></li>
                 <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
-                <li class="nav-item"><a class="nav-link active" href="contacts.html">Contacts</a></li> -->
-            </ul><?php if($apply){ ?><a class="btn btn-primary shadow" role="button" href="<?php echo URLROOT; ?>/enrolls?<?php echo $queryString; ?>">Apply Now!</a> <?php } ?>
+                <li class="nav-item"><a class="nav-link active" href="contacts.html">Contacts</a></li> 
+                <a class="btn btn-primary shadow" role="button" href="<?php //echo URLROOT; ?>/enrolls?<?php //echo $queryString; ?>">Apply Now!</a>-->
+            </ul><?php if($apply){ ?><button class="btn btn-primary fs-5 py-2 px-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Check Availability</button> <?php } ?>
         </div>
     </div>
 </nav>
