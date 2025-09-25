@@ -674,11 +674,21 @@ class Enrolls extends Controller
     //$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $data = [
-        "email" => trim(strtolower($_POST['email'])),
-        "zipcode" => trim($_POST['zipcode']),
-        "status" => "success"
+        "first_name" => trim(ucfirst(strtolower($_POST['firstname']))),
+        "second_name" => trim(ucfirst(strtolower($_POST['lastname']))),
+        "address1" => trim($_POST['address1']),
+        "address2" => trim($_POST['addess2']),
+        "city" => trim(ucfirst(strtolower($_POST['city']))),
+        "state" => strtoupper(trim($_POST['state'] ?? '')),
+        "zipcode" => $_POST['zipcode']
       ];
-      echo json_encode($data);
+      $TWStates = ['OK', 'RI', 'MD', 'AR'];
+      if (in_array($data['state'], $TWStates)) {
+         redirect('enrolls/thankyou');
+      } else {
+          $this->view('enrolls/index',$data);
+      }
+      //echo json_encode($data);
     }
   }
 
