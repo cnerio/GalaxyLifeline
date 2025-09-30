@@ -1,7 +1,7 @@
 <?php
 $queryString = $_SERVER['QUERY_STRING']; // e.g., "utm_source=google&utm_medium=cpc"
-//$full_url = $protocol . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$full_url = "http://localhost/galaxylifeline/enrolls";
+$full_url = $protocol . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+//$full_url = "http://localhost/galaxylifeline/enrolls";
 //echo $queryString;
 
 require APPROOT . '/views/inc/header.php'; ?>
