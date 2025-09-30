@@ -3,6 +3,7 @@ class Enrolls extends Controller
 {
   public $enrollModel;
   public $APIService;
+  public $TG5Api;
   public function __construct()
   {
     $this->enrollModel = $this->model('Enroll');
@@ -450,25 +451,77 @@ class Enrolls extends Controller
     $this->view("enrolls/compress",$data);
   }
 
-  public function test($customer_id){
-    echo $customer_id;
-    $this->APIService = new APIprocess();
-    $row = $this->APIService->getSavedfiles($customer_id,$this->enrollModel,'ID');
-    if($row){
-      echo "GET FILE";
-    }else{
-      echo "FILE NOT FOUND";
-    }
-    // $row2 = $this->enrollModel->getCustomerData($customer_id);
-    // $jsonString = $row2[0]['utms'];
-    // $data = json_decode($jsonString, true);
+  public function test($zipcode){
+    try {
+    $this->TG5Api = new LifelineApiHandler(
+        "https://www.vcareapi.com:8080",
+        "Demo-GoTrueWirelessNRT",
+        "Demo-GoTrueWirelessNRTUser",
+        "Demo-GoTrueWi674f2b9w87dg",
+        "Demo-933516178627"
+    );
 
-    // // Loop through the array
-    // foreach ($data as $item) {
-    //     // Extract values and join them with hyphens
-    //     $result = $item. '-';
-    //     echo $result . PHP_EOL;
-    // }
+    $this->TG5Api->authenticate(); // get token first
+
+    $availability = $this->TG5Api->checkServiceAvailability([
+            "action"=> "check_service_availability",
+            "zip_code"=> $zipcode,
+            "enrollment_type"=> "LIFELINE",
+            "is_enrollment"=> "Y",
+            "agent_id"=> "ewebsiteapi",
+            "external_transaction_id"=> "",
+            "source"=> "WEBSITE"
+    ]);
+    if($availability['msg']=="Success"){
+      echo "Zipcode for Telgoo 5";
+      $enrollmentId = $availability['data']['enrollment_id'];
+      $this->TG5Api->authenticate(); 
+      $addressValidation = $this->TG5Api->addressValidation([
+        "enrollment_id"=> $enrollmentId,
+        "first_name"=> "JOHN",
+        "middle_name"=> "",
+        "last_name"=> "DOE",
+        "address_one"=> "test Street",
+        "address_two"=> "",
+        "city"=> "Tulsa",
+        "state"=> "PR",
+        "zip_code"=> $zipcode,
+        "is_temp"=> "N",
+        "ssn"=> "1234",
+        "dob"=> "2004-08-02",
+        "mailing_address_one"=> "",
+        "mailing_address_two"=> "",
+        "mailing_city"=> "",
+        "mailing_state"=> "",
+        "mailing_zip"=> "",
+        "beneficiary_suffix"=> "",
+        "beneficiary_first_name"=> "",
+        "beneficiary_middle_name"=> "",
+        "beneficiary_last_name"=> " ",
+        "beneficiary_dob"=> "",
+        "beneficiary_ssn"=> "",
+        "action"=> "address_validation",
+        "external_transaction_id"=> "",
+        "agent_id"=> "ewebsiteapi",
+        "source"=> "WEBSITE",
+        "lifeline_enrollment_type"=> "LIFELINE",
+        "address_validation"=>"Y",
+        "initial_choosen_enrollment_type"=> "LIFELINE"
+
+    ]);
+    echo "<pre>";
+    print_r($addressValidation);
+
+    }else{
+      echo "Zipcode to Shockwave";
+    }
+    // $json = json_encode($movie, JSON_PRETTY_PRINT);
+    // echo $json;
+
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
+}
+
   }
 
   public function sendDocumentsAPI($orderId,$typeDoc)
