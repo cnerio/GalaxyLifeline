@@ -21,8 +21,8 @@
       $this->view('pages/index2', $data);
     }
 
-    public function index2(){
-      $this->view('pages/index');
+    public function indexcheck(){
+      $this->view('pages/indexcheck');
     }
 
     public function about(){
