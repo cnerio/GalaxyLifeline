@@ -1,6 +1,7 @@
 <?php
 $queryString = $_SERVER['QUERY_STRING']; // e.g., "utm_source=google&utm_medium=cpc"
-
+//$full_url = $protocol . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$full_url = "http://localhost/galaxylifeline/enrolls";
 //echo $queryString;
 
 require APPROOT . '/views/inc/header.php'; ?>
@@ -77,7 +78,7 @@ require APPROOT . '/views/inc/navbar.php';
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Let's Check</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="checkform" action="<?php echo URLROOT; ?>/enrolls/check" method="POST" enctype="multipart/form-data">
+            <form id="checkform" action="<?php echo URLROOT; ?>/enrolls<?php //echo $queryString; ?>" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
 
                     <div class="row">
@@ -94,7 +95,7 @@ require APPROOT . '/views/inc/navbar.php';
                             </div>
                         </div>
                     </div>
-                    <div class="row pt-2">
+                    <!-- <div class="row pt-2">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="address1">Street Address <span class="requiredmark">*</span></label>
@@ -107,15 +108,15 @@ require APPROOT . '/views/inc/navbar.php';
                                 <input type="text" id="address2" name="addess2" class="form-control">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                             <div class="form-group">
                                 <label for="city">City <span class="requiredmark">*</span></label>
                                 <input type="text" id="city" name="city" class="form-control">
                             </div>
-                        </div>
-                        <div class="col-md-4">
+                        </div> -->
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="state">State <span class="requiredmark">*</span></label>
                                 <select name="state" id="state" class="form-select" onchange="stateChanged()">
@@ -177,7 +178,7 @@ require APPROOT . '/views/inc/navbar.php';
 
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="zipcode">Zipcode <span class="requiredmark">*</span></label>
                                 <input type="text" id="zipcode" name="zipcode" class="form-control zipcode" maxlength="5" pattern="^[0-9]{5}$" placeholder="00000">
@@ -188,8 +189,10 @@ require APPROOT . '/views/inc/navbar.php';
 
                 </div>
                 <div class="modal-footer">
+                    <input type="hidden" id="url" name="url" value="<?php echo $full_url;?>">
                     <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
                     <button id="submitform" type="Submit" class="btn btn-primary" value="">Check</button>
+                    <div id="response"></div>
                 </div>
             </form>
         </div>
@@ -239,7 +242,7 @@ require APPROOT . '/views/inc/navbar.php';
 
         $.validator.addMethod("zipcodeMatch", function (value, element, params) {
     let zipcode = $("#zipcode").val();
-    let city = $("#city").val().toLowerCase();
+    //let city = $("#city").val().toLowerCase();
     let state = $("#state").val();
     let valid = false;
 
@@ -255,7 +258,8 @@ require APPROOT . '/views/inc/navbar.php';
         let apiCity = place["place name"].toLowerCase();
         let apiState = place["state abbreviation"];
         //console.log(state+apiState)
-        if (city == apiCity || state == apiState) {
+        //if (city == apiCity || state == apiState) {
+        if (state == apiState) {
           valid = true;
         }
       },
@@ -265,7 +269,7 @@ require APPROOT . '/views/inc/navbar.php';
     });
 
     return done || valid;
-  }, "City or State does not match to your Zip Code.");
+  }, "State does not match to your Zip Code.");
     });
 $("#submitform").on("click",function(event){
         event.preventDefault();
@@ -274,7 +278,26 @@ $("#submitform").on("click",function(event){
 
         if (form.valid()) {
           console.log("Formulario válido ✅");
-          form.submit(); // This will trigger actual form submission
+          //form.submit(); // This will trigger actual form submission
+           $.ajax({
+            url: "<?php echo URLROOT; ?>/enrolls/check",   // 🔗 backend script
+            type: "POST",
+            data: form.serialize(), // serialize form fields
+            success: function(response) {
+                //$("#response").html(response);
+                
+                resObj = JSON.parse(response);
+                //console.log(resObj)
+                if(resObj.message=="success"){
+                    form.submit();
+                }else if(resObj.message=="redirect"){
+                    window.location.href ="<?php echo URLROOT;?>/enrolls/redirect";
+                }
+            },
+            error: function(xhr, status, error) {
+                //$("#response").html("Error: " + error);
+            }
+            });
         } else {
           console.log("Formulario con errores ❌");
         }

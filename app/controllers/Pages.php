@@ -22,7 +22,8 @@
     }
 
     public function indexcheck(){
-      $this->view('pages/indexcheck');
+      
+          $this->view('pages/indexcheck');
     }
 
     public function about(){

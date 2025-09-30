@@ -102,4 +102,19 @@ class Enroll {
         return $result;
     }
 
+    public function getStates($company){
+        switch($company){
+            case "AMBT":
+                $query = "SELECT abrv FROM lifeline_states WHERE AMBT=1;";
+                break;
+            case "GTW":
+                $query = "SELECT * FROM go_knows.lifeline_states WHERE GTW=1;";
+                break;
+        }
+        $this->db->query($query);
+        $response = $this->db->resultSet();
+        $result = array_column($response, 'abrv');
+        return $result;
+    }
+
 }

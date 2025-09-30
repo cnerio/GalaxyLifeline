@@ -31,12 +31,31 @@ class Enrolls extends Controller
 
   public function index()
   {
-    $data = [
-      'title' => 'About Us',
-      'description' => 'App to share posts with other users'
-    ];
+     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+          $full_url = $_POST['url'];
+            parse_str(parse_url($full_url, PHP_URL_QUERY), $params);
+            $utms = json_encode($params);
+          $data = [
+            "first_name" => trim(ucfirst(strtolower($_POST['firstname']))),
+            "second_name" => trim(ucfirst(strtolower($_POST['lastname']))),
+            // "address1" => trim($_POST['address1']),
+            // "address2" => trim($_POST['addess2']),
+            // "city" => trim(ucfirst(strtolower($_POST['city']))),
+            "state" => strtoupper(trim($_POST['state'] ?? '')),
+            "zipcode" => $_POST['zipcode'],
+            "url" => $full_url,
+            "utms"=>$utms
+            
+          ];
 
-    $this->view('enrolls/index', $data);
+          $this->view('enrolls/index', $data);
+        }else{
+          $this->view('enrolls/index');
+        }
+  }
+
+  public function redirect(){
+    $this->view('enrolls/redirect');
   }
 
   public function ca()
@@ -54,6 +73,19 @@ class Enrolls extends Controller
     $this->view('enrolls/ca', $data);
   }
 
+  public function genCustomerId2($data, $lastId)
+  {
+    $flfn = ($data['first_name']) ? strtoupper(substr($data['first_name'], 0, 1)) : "X";
+    $flsn = ($data['second_name']) ? strtoupper(substr($data['second_name'], 0, 1)) : "X";
+    $fdpn = ($data['zipcode']) ? substr($data['phone_number'], 0, 1) : "0";
+    $flea = ($data['state']) ? strtoupper(substr($data['email'], 0, 1)) : "X";
+    $num = str_pad($lastId, 4, '0', STR_PAD_LEFT);
+
+    $customerId = "G-" . $flfn . $flsn . $fdpn . $flea . $num;
+
+    return $customerId;
+  }
+
   public function genCustomerId($data, $lastId)
   {
     $flfn = ($data['first_name']) ? strtoupper(substr($data['first_name'], 0, 1)) : "X";
@@ -67,25 +99,45 @@ class Enrolls extends Controller
     return $customerId;
   }
 
+  public function check()
+  {
+    //$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $full_url = $_POST['url'];
+        parse_str(parse_url($full_url, PHP_URL_QUERY), $params);
+        $utms = json_encode($params);
+      $data = [
+        "first_name" => trim(ucfirst(strtolower($_POST['firstname']))),
+        "second_name" => trim(ucfirst(strtolower($_POST['lastname']))),
+        // "address1" => trim($_POST['address1']),
+        // "address2" => trim($_POST['addess2']),
+        // "city" => trim(ucfirst(strtolower($_POST['city']))),
+        "state" => strtoupper(trim($_POST['state'] ?? '')),
+        "zipcode" => $_POST['zipcode'],
+        "URL" => $full_url,
+        "utms"=>$utms
+        
+      ];
+      $AMBTstates = $this->enrollModel->getStates('AMBT');
+      
+      
+      $TWStates = $this->enrollModel->getStates('GTW');
+      //print_r($states);
+      //exit();
+      if (in_array($data['state'], $TWStates)) {
+        //redirect('enrolls/redirect');
+        $data['message']="redirect";
+      } else if (in_array($data['state'], $AMBTstates)) {
+        //$this->view('enrolls/index',$data);
+        $data['message']="success";
+      }
+      echo json_encode($data);
+    }
+  }
+
   public function savestep1()
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-      // $post_data = http_build_query(
-      //     array(
-      //         'secret' => "6LeNtMcrAAAAAE6ODEJB6dVsGrqLLdvw5LxG8o8Q",
-      //         'response' => $_POST['g-recaptcha-response'],
-      //         'remoteip' => $_SERVER['REMOTE_ADDR']
-      //     )
-      // );
-      // $opts = array('http' =>
-      //     array(
-      //         'method'  => 'POST',
-      //         'header'  => 'Content-type: application/x-www-form-urlencoded',
-      //         'content' => $post_data
-      //     )
-      // );
-
     $secret = "6LeNtMcrAAAAAE6ODEJB6dVsGrqLLdvw5LxG8o8Q";
     $responseKey = $_POST['g-recaptcha-response'];
     $remoteip = $_SERVER['REMOTE_ADDR'];
@@ -722,28 +774,7 @@ class Enrolls extends Controller
     $this->view('enrolls/thankyou');
   }
 
-  public function check()
-  {
-    //$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $data = [
-        "first_name" => trim(ucfirst(strtolower($_POST['firstname']))),
-        "second_name" => trim(ucfirst(strtolower($_POST['lastname']))),
-        "address1" => trim($_POST['address1']),
-        "address2" => trim($_POST['addess2']),
-        "city" => trim(ucfirst(strtolower($_POST['city']))),
-        "state" => strtoupper(trim($_POST['state'] ?? '')),
-        "zipcode" => $_POST['zipcode']
-      ];
-      $TWStates = ['OK', 'RI', 'MD', 'AR'];
-      if (in_array($data['state'], $TWStates)) {
-         redirect('enrolls/thankyou');
-      } else {
-          $this->view('enrolls/index',$data);
-      }
-      //echo json_encode($data);
-    }
-  }
+  
 
   public function getprograms()
   {
