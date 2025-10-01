@@ -22,7 +22,7 @@ require APPROOT . '/views/inc/navbar.php';
                                                                                                             ?>/enrolls?<?php //echo $queryString; 
                                                                                                                         ?>">Apply Now!</a></div> -->
                     <div class="my-2">
-                        <button class="btn btn-primary fs-5 py-2 px-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Check Availability</button>
+                        <button class="btn btn-primary fs-5 py-2 px-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Apply Now</button>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@ require APPROOT . '/views/inc/navbar.php';
                                                                                                 ?>/enrolls?<?php //echo $queryString; 
                                                                                                             ?>">Apply Now !</a></div> -->
             <div class="my-2">
-                <button class="btn btn-light fs-5 py-2 px-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Check Availability</button>
+                <button class="btn btn-light fs-5 py-2 px-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Apply Now</button>
             </div>
         </div>
     </div>
