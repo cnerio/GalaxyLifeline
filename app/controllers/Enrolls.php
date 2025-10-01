@@ -125,8 +125,15 @@ class Enrolls extends Controller
       //print_r($states);
       //exit();
       if (in_array($data['state'], $TWStates)) {
-        //redirect('enrolls/redirect');
-        $data['message']="redirect";
+        if($data['state']=="TX"){
+          $twzipcodes = $this->enrollModel->getZipcodes('GTW');
+          if(in_array($data['zipcode'],$twzipcodes)){
+            //redirect('enrolls/redirect');
+            $data['message']="redirect";
+          }else{
+            $data['message']="success";
+          }
+        }
       } else if (in_array($data['state'], $AMBTstates)) {
         //$this->view('enrolls/index',$data);
         $data['message']="success";

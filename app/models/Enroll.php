@@ -117,4 +117,19 @@ class Enroll {
         return $result;
     }
 
+    public function getZipcodes($company){
+        switch($company){
+            case "AMBT":
+                $query = "SELECT abrv FROM lifeline_zipcodes WHERE AMBT=1;";
+                break;
+            case "GTW":
+                $query = "SELECT * FROM lifeline_zipcodes WHERE GTW=1;";
+                break;
+        }
+        $this->db->query($query);
+        $response = $this->db->resultSet();
+        $result = array_column($response, 'zipcode');
+        return $result;
+    }
+
 }

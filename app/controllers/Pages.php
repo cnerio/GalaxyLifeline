@@ -18,7 +18,7 @@
         'mail' => 'emmizy2015@gmail.com'
       ];
      
-      $this->view('pages/index2', $data);
+      $this->view('pages/index', $data);
     }
 
     public function indexcheck(){
