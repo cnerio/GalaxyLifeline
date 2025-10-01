@@ -108,7 +108,7 @@ class Enroll {
                 $query = "SELECT abrv FROM lifeline_states WHERE AMBT=1;";
                 break;
             case "GTW":
-                $query = "SELECT * FROM go_knows.lifeline_states WHERE GTW=1;";
+                $query = "SELECT * FROM lifeline_states WHERE GTW=1;";
                 break;
         }
         $this->db->query($query);
