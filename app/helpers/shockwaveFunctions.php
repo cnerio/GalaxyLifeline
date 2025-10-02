@@ -618,13 +618,13 @@ function lifeline_payload($data, $credentials,$packages)
 			"BQPDOB":"' . $data['bqp_dob'] . '",
 			"HasBQPAlternateId":"false",
 			"RepNotAssisted": "true",
-			"EnrollConsent":"",
-			"TranferConsent":"",
+			"EnrollConsent":"True",
+			"TranferConsent":"True",
 			"ExternalId": "' . $externalId . '",
 			"Variable":"' . $data['phone_type'] . '",
 			"Language":"' . $language . '",
-			"ConsentDateTime":"",
-			"ConsentTimeZone":""
+			"ConsentDateTime":"' . $data['datetimeConsent'] . '",,
+			"ConsentTimeZone":"2"
 		}';
 	}else{
 			$payload = '{
