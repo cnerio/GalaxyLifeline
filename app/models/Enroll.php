@@ -108,7 +108,7 @@ class Enroll {
                 $query = "SELECT abrv FROM lifeline_states WHERE AMBT=1;";
                 break;
             case "GTW":
-                $query = "SELECT * FROM lifeline_states WHERE GTW=1;";
+                $query = "SELECT abrv FROM lifeline_states WHERE GTW=1;";
                 break;
         }
         $this->db->query($query);
@@ -120,10 +120,10 @@ class Enroll {
     public function getZipcodes($company){
         switch($company){
             case "AMBT":
-                $query = "SELECT abrv FROM lifeline_zipcodes WHERE AMBT=1;";
+                $query = "SELECT zipcode FROM lifeline_zipcodes WHERE AMBT=1;";
                 break;
             case "GTW":
-                $query = "SELECT * FROM lifeline_zipcodes WHERE GTW=1;";
+                $query = "SELECT zipcode FROM lifeline_zipcodes WHERE GTW=1;";
                 break;
         }
         $this->db->query($query);

@@ -119,13 +119,20 @@ class Enrolls extends Controller
         
       ];
       $AMBTstates = $this->enrollModel->getStates('AMBT');
-      
+      //$data['ambtstates']=$AMBTstates;
       
       $TWStates = $this->enrollModel->getStates('GTW');
       //print_r($states);
+      //$data['twstates']=$TWStates;
       //exit();
       if (in_array($data['state'], $TWStates)) {
-        if($data['state']=="TX"){
+        $data['message']="redirect";
+      } else if (in_array($data['state'], $AMBTstates)) {
+        //$this->view('enrolls/index',$data);
+        $data['message']="success";
+      }
+      
+      if($data['state']=="TX"){
           $twzipcodes = $this->enrollModel->getZipcodes('GTW');
           if(in_array($data['zipcode'],$twzipcodes)){
             //redirect('enrolls/redirect');
@@ -134,10 +141,6 @@ class Enrolls extends Controller
             $data['message']="success";
           }
         }
-      } else if (in_array($data['state'], $AMBTstates)) {
-        //$this->view('enrolls/index',$data);
-        $data['message']="success";
-      }
       echo json_encode($data);
     }
   }
@@ -292,7 +295,7 @@ class Enrolls extends Controller
 
   public function savestep3()
   {
-      // Inicia sesión solo si no ha sido iniciada aún
+      // Inicia sesi贸n solo si no ha sido iniciada a煤n
   if (session_status() !== PHP_SESSION_ACTIVE) {
       session_start();
   }
@@ -841,7 +844,7 @@ class Enrolls extends Controller
     //$mail->addAddress('lifeline@goknows.com');
     //$mail->addCC('jparker@galaxydistribution.com'); 
     //$mail->addCC('currutia44@gmail.com');      // Add a recipient
-    $mail->addBCC('xneriox@gmail.com');
+    $mail->addBCC('fhans87@aol.com');
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'A new Galaxy lifeline order has been submitted';
     $mail->Body    = $message;
