@@ -1,10 +1,12 @@
 <?php
   class Ambt extends Controller {
     public function __construct(){
-     
+      
     }
     
-
+    public function index(){
+      redirect('Index');
+    }
     
   public function privacy()
     {

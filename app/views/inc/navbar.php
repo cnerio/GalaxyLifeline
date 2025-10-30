@@ -10,14 +10,20 @@
             <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
         </button>
         <div id="navcol-1" class="collapse navbar-collapse">
-            <ul class="navbar-nav mx-auto">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"></li> 
+                <li class="nav-item" style="text-align: right;">
+                    <a class="nav-link active pb-0" target="_blank" href="mailto:support@galaxylifeline.com">support@galaxylifeline.com <i class="fa fa-envelope"></i></a>
+                    <a class="nav-link active pt-0" target="_blank" href="tel:+18333345566" style="font-family: sans-serif;">(833) 334-5566 <i class="fa fa-phone-square"></i></a>
+                </li> 
                 <!-- <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
                 <li class="nav-item"><a class="nav-link" href="integrations.html">Integrations</a></li>
                 <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
                 <li class="nav-item"><a class="nav-link active" href="contacts.html">Contacts</a></li> 
                 <a class="btn btn-primary shadow" role="button" href="<?php //echo URLROOT; ?>/enrolls?<?php //echo $queryString; ?>">Apply Now!</a>-->
-            </ul><?php if($apply){ ?><button class="btn btn-primary fs-5 py-2 px-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Apply Now</button> <?php } ?>
+            </ul>
+            <?php if($apply){ ?><button class="btn btn-primary fs-5 py-2 px-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Apply Now</button> <?php } ?>
         </div>
     </div>
 </nav>
