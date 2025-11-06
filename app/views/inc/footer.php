@@ -6,7 +6,7 @@
                     <p class="legal-text"><span class="legal-span">Galaxy Distribution, Inc. “Galaxy” is powered by “AMBT” Company , a recognized service provider of Lifeline services. “AMBT” has engaged and supervises Surge to provide prospective beneficiaries enrollment services and customer support to qualified residents. Galaxy operates the galaxylifeline.com website. All references to Galaxy herein shall refer to "Galaxy Distribution, powered by AMBT”.</span> </p>
                     <p class="legal-text"><span class="legal-span">Completion of this form is required. This form is used for the purpose of verifying your eligibility for and enrolling you in Lifeline benefits and an eligible “AMBT” service plan and will not be used for any other purpose. LifeLine benefits are subject to verification of eligibility by the National Verifier and/or a Third-Party Administrator “TPA”.<br></span></p>
                     <p class="legal-text"><span class="legal-span">Lifeline services are subject to availability and AMBT’s <a target="_BLANK" href="https://galaxylifeline.com/Ambt/terms" alt="americanassistance">Terms and Conditions</a> and Policies are available at <a target="_BLANK" href="https://galaxylifeline.com/Ambt/privacy" alt="americanassistance">Here</a>.</span> </p>
-                    <p class="legal-text"><span class="legal-span">Requires 5G/4G LTE Unlocked AT&amp;T Compatible Phone.</span></p>
+                    <!-- <p class="legal-text"><span class="legal-span">Requires 5G/4G LTE Unlocked AT&amp;T Compatible Phone.</span></p> -->
                     <p class="legal-text"><span class="legal-span">Galaxy Lifeline are wholly owned subsidiaries of Galaxy Distribution.</span></p>
 
                 </div>
