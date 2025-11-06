@@ -840,11 +840,11 @@ class Enrolls extends Controller
     $mail->Port       = 587;                                 // TCP port to connect to
     //Recipients
     $mail->setFrom('lifeline@galaxydistribution.com', 'Galaxy Lileline Orders');
-    $mail->addAddress('currutia44@gmail.com');
+    $mail->addAddress('orders@galaxylifeline.com');
     //$mail->addAddress('lifeline@goknows.com');
     //$mail->addCC('jparker@galaxydistribution.com'); 
     //$mail->addCC('currutia44@gmail.com');      // Add a recipient
-    $mail->addBCC('fhans87@aol.com');
+    //$mail->addBCC('fhans87@aol.com');
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'A new Galaxy lifeline order has been submitted';
     $mail->Body    = $message;
