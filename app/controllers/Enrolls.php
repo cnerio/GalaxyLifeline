@@ -588,14 +588,15 @@ class Enrolls extends Controller
 
   public function sendDocumentsAPI($orderId,$typeDoc)
   {
-    echo $orderId;
-    echo "<br>";
+    //echo $orderId;
+    //echo "<br>";
     $customerData = $this->enrollModel->getCustomerbyOrderId($orderId);
     //print_r($customerData);
     $this->APIService = new APIprocess();
     $response=$this->APIService->sendDocuments($customerData[0]['customer_id'],$customerData[0]['order_id'],$typeDoc,$this->enrollModel);
 
-    print_r($response);
+    //print_r($response);
+    echo json_encode($response);
   }
 
  public function getallfilessaved($customerId){
@@ -692,7 +693,7 @@ class Enrolls extends Controller
     $this->APIService = new APIprocess();
     $consentFile64=$this->APIService->getConsentFile($orderId);
             //$consentFile64 = getConsent64($row[0]);
-            print_r($consentFile64);
+            //print_r($consentFile64);
              $processData['customer_id']=$customerId;
               $processData['process_status']="generating consent File";
               $this->enrollModel->updateData($processData,'lifeline_records');
@@ -722,7 +723,7 @@ class Enrolls extends Controller
               $this->enrollModel->updateData($processData,'lifeline_records');
             }
 
-            print_r($result);
+            echo json_encode($result);
   }
 
   public function getConsentFile($orderId)
